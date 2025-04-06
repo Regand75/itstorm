@@ -8,6 +8,7 @@
 
 # Node
 frontend/node_modules/
+frontend//.angular/cache
 backend/node_modules/
 /node_modules
 npm-debug.log
