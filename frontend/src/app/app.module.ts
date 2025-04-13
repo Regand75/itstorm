@@ -18,7 +18,7 @@ import {MatMenuModule} from "@angular/material/menu";
     LayoutComponent,
     FooterComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
