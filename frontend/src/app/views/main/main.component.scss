@@ -1,0 +1,92 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.offers {
+  padding-bottom: 120px;
+
+  .container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+
+    .offers-carousel {
+      background-repeat: no-repeat;
+      background-position-x: calc(50% + 246px);
+
+      svg {
+        position: absolute;
+        z-index: 0;
+      }
+
+      .offers-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 100px 0 98px 80px;
+        margin: 0;
+        max-width: 548px;
+
+        .offers-lead-in {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          margin: 0;
+          letter-spacing: 0.4em;
+          text-transform: uppercase;
+          color: $light-blue-text-color;
+          z-index: 1;
+        }
+
+        .offers-title {
+          @include head-lora-50;
+          line-height: 130%;
+          color: #FFFFFF;
+          margin-top: 0;
+          margin-bottom: 0;
+          z-index: 1;
+
+          span {
+            color: $light-blue-text-color;
+          }
+        }
+
+        .offers-text {
+          font-size: 24px;
+          line-height: 130%;
+          color: #FFFFFF;
+          width: 456px;
+          //margin-top: 20px;
+          //margin-bottom: 10px;
+          z-index: 1;
+        }
+
+        .offers-button {
+          width: 163px;
+          margin-top: 40px;
+          z-index: 1;
+        }
+      }
+    }
+
+    .offers-arrows {
+      display: flex;
+
+      a {
+        top: calc(50% - 14px);
+        display: flex;
+        position: absolute;
+        cursor: pointer;
+        z-index: 3;
+
+        &.move-backward {
+          left: 10px;
+        }
+
+        &.move-forward {
+          right: 10px;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
