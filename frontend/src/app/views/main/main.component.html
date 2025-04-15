@@ -47,3 +47,14 @@
     </div>
   </div>
 </section>
+
+<section class="services">
+  <div class="container">
+    <div class="services-title">Услуги, которые мы предлагаем</div>
+    <div class="services-wrapper">
+      <service-card *ngFor="let serviceCardData of servicesCardData" [serviceCardData]="serviceCardData"></service-card>
+    </div>
+  </div>
+</section>
+
+

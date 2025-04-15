@@ -2,7 +2,7 @@
 @import "../../../assets/styles/mixins";
 
 .offers {
-  padding-bottom: 120px;
+  margin-bottom: 120px;
 
   .container {
     position: relative;
@@ -54,8 +54,6 @@
           line-height: 130%;
           color: #FFFFFF;
           width: 456px;
-          //margin-top: 20px;
-          //margin-bottom: 10px;
           z-index: 1;
         }
 
@@ -86,6 +84,23 @@
           transform: rotate(180deg);
         }
       }
+    }
+  }
+}
+
+.services {
+  margin-bottom: 120px;
+  .container {
+    .services-title {
+      @include head-lora-38;
+      text-align: start;
+      color: $light-blue-text-color;
+      margin-bottom: 40px;
+    }
+    .services-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }

@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NameValidatorDirective} from "./directives/name-validator.directive";
+import { ServiceCardComponent } from './components/service-card/service-card.component';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
-  declarations: [NameValidatorDirective],
+  declarations: [NameValidatorDirective, ServiceCardComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
-  exports: [NameValidatorDirective],
+    exports: [NameValidatorDirective, ServiceCardComponent],
 })
 export class SharedModule { }
