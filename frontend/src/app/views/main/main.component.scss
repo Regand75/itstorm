@@ -2,7 +2,7 @@
 @import "../../../assets/styles/mixins";
 
 .offers {
-  margin-bottom: 120px;
+  padding-bottom: 120px;
 
   .container {
     position: relative;
@@ -29,7 +29,6 @@
           font-family: "Montserrat", sans-serif;
           font-weight: 600;
           font-size: 12px;
-          margin: 0;
           letter-spacing: 0.4em;
           text-transform: uppercase;
           color: $light-blue-text-color;
@@ -40,8 +39,6 @@
           @include head-lora-50;
           line-height: 130%;
           color: #FFFFFF;
-          margin-top: 0;
-          margin-bottom: 0;
           z-index: 1;
 
           span {
@@ -89,14 +86,15 @@
 }
 
 .services {
-  margin-bottom: 120px;
+  padding-bottom: 120px;
+
   .container {
     .services-title {
       @include head-lora-38;
       text-align: start;
-      color: $light-blue-text-color;
       margin-bottom: 40px;
     }
+
     .services-wrapper {
       display: flex;
       justify-content: space-between;
@@ -105,3 +103,51 @@
   }
 }
 
+.info {
+  background-color: #FFFFFF;
+  background-image: url("../../../assets/images/page/info-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: calc(50% - 390px);
+  padding-bottom: 120px;
+
+  .container {
+
+    .info-wrapper {
+      padding-left: 521px;
+
+      .info-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .info-text {
+        max-width: 633px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $violet-text-color;
+        margin-bottom: 40px;
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .info-advantages {
+        .info-advantages-title {
+          @include head-lora-26;
+          margin-bottom: 20px;
+        }
+
+        .info-advantages-wrapper {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px 73px;
+          margin-right: 9px;
+
+        }
+      }
+    }
+  }
+}

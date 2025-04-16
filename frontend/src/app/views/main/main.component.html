@@ -8,10 +8,13 @@
             <ellipse cx="0.5" rx="702.5" ry="702" fill="#B9D5FD"/>
           </svg>
           <div class="offers-wrapper">
-            <h5 class="offers-lead-in">{{ offer.leadIn }}</h5>
-            <h2 class="offers-title">{{ offer.titleFirstPart }}
-              <span>{{ offer.titleSpan }}</span>{{ offer.titleSecondPart }}</h2>
-            <div class="offers-text" style="margin-top: {{ offer.marginTop }}; margin-bottom: {{ offer.marginBottom }}">{{ offer.text }}</div>
+            <div class="offers-lead-in">{{ offer.leadIn }}</div>
+            <div class="offers-title">{{ offer.titleFirstPart }}
+              <span>{{ offer.titleSpan }}</span>{{ offer.titleSecondPart }}
+            </div>
+            <div class="offers-text"
+                 style="margin-top: {{ offer.marginTop }}; margin-bottom: {{ offer.marginBottom }}">{{ offer.text }}
+            </div>
             <a href="#" class="offers-button button">Подробнее</a>
           </div>
         </div>
@@ -57,4 +60,27 @@
   </div>
 </section>
 
+<section class="info">
+  <div class="container">
+    <div class="info-wrapper">
+      <div class="info-title">
+        Кто мы и чем мы занимаемся?
+      </div>
+      <p class="info-text">
+        <span>АйтиШторм</span> — это ваш помощник №1 при решении таких вопросов, как продвижение в сети, разработка
+        сайтов для
+        бизнеса и личного бренда, сторисмейкинг, копирайтинг, маркетинг, разработка визуальной концепции и создание
+        инфопродуктов. Компания была основана в 2019 году и за всё это время смогла выйти в ТОП-10 агенств, предлагающих
+        услуги продвижения в сети.
+      </p>
+      <div class="info-advantages">
+        <div class="info-advantages-title">Наши преимущества</div>
+
+        <div class="info-advantages-wrapper">
+          <advantage *ngFor="let advantage of advantages" [advantages]="advantage"></advantage>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 

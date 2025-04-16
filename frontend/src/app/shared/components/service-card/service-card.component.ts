@@ -8,10 +8,10 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ServiceCardComponent implements OnInit {
 
   @Input() serviceCardData!: {
-    image: string;
-    title: string;
-    text: string;
-    price: string;
+    image: string,
+    title: string,
+    text: string,
+    price: string,
   };
 
   constructor() { }

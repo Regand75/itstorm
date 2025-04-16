@@ -1,0 +1,35 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.info-advantage {
+  display: flex;
+  gap: 20px;
+
+  .info-advantage-circle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #B9D5FD;
+    margin-top: 33px;
+
+    .info-advantage-circle-number {
+      @include head-lora-50;
+      color: $light-blue-text-color;
+      text-align: center;
+      line-height: 50%;
+    }
+  }
+
+  .info-advantage-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: $violet-text-color;
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
