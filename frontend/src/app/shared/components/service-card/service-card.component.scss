@@ -1,9 +1,31 @@
 @import "../../../../assets/styles/variables";
 
 .service-card {
+  position: relative;
   width: 291px;
   height: 498px;
   box-sizing: border-box;
+
+  &.is-data-backend {
+    height: 571px;
+    cursor: pointer;
+  }
+
+  .service-card-category {
+    position: absolute;
+    top: 10px;
+    right: 9px;
+    z-index: 2;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 8px 18px 10px 18px;
+    box-sizing: border-box;
+
+    span {
+      font-size: 11px;
+      color: $light-blue-text-color
+    }
+  }
 
   .service-card-image {
     width: 291px;
@@ -30,6 +52,10 @@
     line-height: 130%;
     color: $dark-blue-text-color;
     margin-top: 10px;
+
+    &.is-data-backend-text {
+      margin-top: 20px;
+    }
   }
 
   .service-card-info {
@@ -48,5 +74,12 @@
     .service-card-action .button {
       width: 163px;
     }
+  }
+  .service-card-reading {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $light-blue-text-color;
+    text-decoration: underline;
   }
 }

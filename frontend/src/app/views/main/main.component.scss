@@ -151,3 +151,109 @@
     }
   }
 }
+
+.popular-articles {
+  padding-bottom: 120px;
+
+  .container {
+    .popular-articles-title {
+      @include head-lora-38;
+      margin-bottom: 20px;
+    }
+
+    .popular-articles-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .popular-articles-going {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 195px;
+      cursor: pointer;
+      margin-left: auto;
+
+      .popular-articles-going-href {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: $light-blue-text-color;
+      }
+    }
+  }
+}
+
+.reviews {
+  margin-bottom: 120px;
+
+  .container {
+    .reviews-title {
+      @include head-lora-38;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .reviews-carousel {
+      position: relative;
+
+      .reviews-item {
+        width: 396px;
+        height: 267px;
+        padding: 30px;
+        border: 2px solid #071739;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        .reviews-item-head {
+          display: flex;
+          align-items: center;
+
+          .reviews-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            margin-right: 26px;
+          }
+
+          .reviews-item-name {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: $light-blue-text-color;
+          }
+        }
+
+        .reviews-item-text {
+          margin-top: 15px;
+          font-size: 16px;
+          line-height: 140%;
+          color: $dark-blue-text-color;
+        }
+      }
+
+      .reviews-arrows {
+        display: flex;
+
+        a {
+          top: calc(50% - 5px);
+          display: flex;
+          position: absolute;
+          cursor: pointer;
+
+          &.move-backward {
+            left: -25px;
+          }
+
+          &.move-forward {
+            right: -25px;
+          }
+        }
+      }
+    }
+  }
+}

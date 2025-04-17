@@ -1,11 +1,15 @@
-<div class="service-card">
-  <div class="service-card-image" style="background-image: url('/assets/images/card/{{serviceCardData.image}}')"></div>
-  <div class="service-card-title">{{serviceCardData.title}}</div>
-  <p class="service-card-text">{{serviceCardData.text}}</p>
-  <div class="service-card-info">
+<div class="service-card" (click)="navigate()" [class.is-data-backend]="isDataBackend">
+  <div class="service-card-category" *ngIf="isDataBackend">
+    <span>{{article.category}}</span>
+  </div>
+  <div class="service-card-image" [style.background-image]="'url(' + cardImage + ')'"></div>
+  <div class="service-card-title">{{cardData.title}}</div>
+  <p class="service-card-text" [class.is-data-backend-text]="isDataBackend">{{cardData.description}}</p>
+  <div class="service-card-info" *ngIf="!isDataBackend">
     <div class="service-card-price">От {{serviceCardData.price}} ₽</div>
     <div class="service-card-action">
       <button class="button">Подробнее</button>
     </div>
   </div>
+  <div class="service-card-reading" *ngIf="isDataBackend">Читать дальше</div>
 </div>
