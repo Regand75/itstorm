@@ -8,7 +8,6 @@
 
   &.is-data-backend {
     height: 571px;
-    cursor: pointer;
   }
 
   .service-card-category {
@@ -45,7 +44,8 @@
   }
 
   .service-card-text {
-    height: 90px;
+    max-height: 147px;
+    overflow-y: auto;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -81,5 +81,6 @@
     left: 0;
     color: $light-blue-text-color;
     text-decoration: underline;
+    cursor: pointer;
   }
 }

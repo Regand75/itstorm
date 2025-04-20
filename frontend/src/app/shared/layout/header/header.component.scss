@@ -37,6 +37,10 @@ header.header {
                 text-decoration: none;
                 color: $dark-blue-text-color;
 
+                &:hover {
+                  color: $light-blue-text-color;
+                }
+
                 &.active {
                   color: $light-blue-text-color;
                 }

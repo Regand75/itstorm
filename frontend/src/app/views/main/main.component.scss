@@ -181,6 +181,7 @@
         font-weight: 500;
         font-size: 20px;
         color: $light-blue-text-color;
+        text-decoration: none;
       }
     }
   }
@@ -251,6 +252,60 @@
 
           &.move-forward {
             right: -25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contacts {
+  padding-bottom: 120px;
+
+  .container {
+    .contacts-wrapper {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+
+      .contacts-map {
+
+      }
+
+      .contact {
+        margin-bottom: 63px;
+        max-width: 500px;
+
+        .contact-title {
+          @include head-lora-38;
+          margin-bottom: 20px;
+        }
+
+        .wrapper {
+          margin-bottom: 20px;
+
+          a {
+            text-decoration: none;
+          }
+
+          .title {
+            font-size: 20px;
+            color: $light-blue-text-color;
+            margin-bottom: 10px;
+          }
+
+          .info-text {
+            font-size: 14px;
+            color: $dark-blue-text-color;
+          }
+
+          .contact-social-icon {
+            display: flex;
+            align-items: center;
+
+            a {
+              margin-right: 20px;
+            }
           }
         }
       }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ArticleType} from "../../../../type/article.type";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'service-card',
@@ -15,8 +16,9 @@ export class ServiceCardComponent implements OnInit {
     description: string,
     price: string,
   };
-  // @Input() isDataBackend: boolean = false;
   @Input() article!: ArticleType;
+
+  serverStaticPath = environment.serverStaticPath;
 
   constructor(private router: Router) { }
 
@@ -26,7 +28,7 @@ export class ServiceCardComponent implements OnInit {
 
   get cardImage(): string {
     if (this.isDataBackend) {
-      return `http://localhost:3000/images/${this.article.image}`;
+      return `${this.serverStaticPath}/${this.article.image}`;
     } else {
       return `/assets/images/card/${this.serviceCardData.image}`; // путь внутри проекта
     }
