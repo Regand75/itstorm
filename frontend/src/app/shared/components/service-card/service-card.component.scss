@@ -44,8 +44,7 @@
   }
 
   .service-card-text {
-    max-height: 147px;
-    overflow-y: auto;
+    height: 90px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -54,6 +53,8 @@
     margin-top: 10px;
 
     &.is-data-backend-text {
+      height: 147px;
+      overflow-y: auto;
       margin-top: 20px;
     }
   }

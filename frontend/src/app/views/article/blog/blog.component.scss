@@ -16,7 +16,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
 
       .blog-applied-filters {
         display: flex;
@@ -30,11 +30,6 @@
           display: flex;
           align-items: center;
           margin-right: 20px;
-          margin-bottom: 20px;
-
-          span {
-
-          }
 
           a {
             text-decoration: none;
@@ -63,6 +58,17 @@
             text-decoration: none;
             cursor: pointer;
             display: flex;
+          }
+        }
+
+        &.open {
+          width: 257px;
+          background-color: #B9D5FD;
+          padding: 0 23px 1px 0;
+          border-radius: 5px 5px 0 0;
+
+          .blog-filter-body {
+            display: block;
           }
         }
 
@@ -96,17 +102,6 @@
           .blog-filter-item-icon {
             width: 12px;
             text-align: center;
-          }
-        }
-
-        &.open {
-          width: 257px;
-          background-color: #B9D5FD;
-          border-radius: 5px 5px 0 0;
-          padding-right: 23px;
-
-          .blog-filter-body {
-            display: block;
           }
         }
       }
