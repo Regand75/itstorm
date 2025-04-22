@@ -1,8 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {ArticleService} from "../../../shared/services/article.service";
-import {ArticleType} from "../../../../type/article.type";
+import {ArticleType} from "../../../../types/article.type";
 import {CategoryService} from "../../../shared/services/category.service";
-import {CategoryType} from "../../../../type/category.type";
+import {CategoryType} from "../../../../types/category.type";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActiveParamsType} from "../../../../types/active-params.type";
 
@@ -20,6 +20,7 @@ export class BlogComponent implements OnInit {
   filterOpen: boolean = false;
   activeParams: ActiveParamsType = {categories: []};
   appliedFilters: { name: string, urlParam: string }[] = [];
+  pages: number[] = [];
 
   @HostListener('document:click', ['$event'])
   click(event: Event): void {
@@ -59,8 +60,12 @@ export class BlogComponent implements OnInit {
       });
 
     this.articleService.getArticles()
-      .subscribe(articles => {
-        this.articles = articles.items;
+      .subscribe(data => {
+        this.pages = [];
+        for (let i = 1; i <= data.pages; i++) {
+          this.pages.push(i);
+        }
+        this.articles = data.items;
       });
   }
 

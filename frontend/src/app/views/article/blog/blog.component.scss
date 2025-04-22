@@ -147,6 +147,10 @@
           &.active {
             color: #B9D5FD
           }
+
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
 

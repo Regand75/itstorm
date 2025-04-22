@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ArticleService} from "../../shared/services/article.service";
-import {ArticleType} from "../../../type/article.type";
+import {ArticleType} from "../../../types/article.type";
 
 @Component({
   selector: 'app-main',

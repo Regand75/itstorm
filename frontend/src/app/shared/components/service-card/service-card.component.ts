@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {ArticleType} from "../../../../type/article.type";
+import {ArticleType} from "../../../../types/article.type";
 import {environment} from "../../../../environments/environment";
 
 @Component({
