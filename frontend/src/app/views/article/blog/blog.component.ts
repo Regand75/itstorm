@@ -15,8 +15,6 @@ export class BlogComponent implements OnInit {
 
   articles: ArticleType[] = [];
   categories: CategoryType[] = [];
-  isDisabledLeftArrow: boolean = false;
-  isDisabledRightArrow: boolean = false;
   filterOpen: boolean = false;
   activeParams: ActiveParamsType = {categories: []};
   appliedFilters: { name: string, urlParam: string }[] = [];
@@ -24,7 +22,8 @@ export class BlogComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   click(event: Event): void {
-    if (this.filterOpen && (event.target as HTMLElement).className.indexOf('blog-filter') === -1) {
+    if (this.filterOpen &&
+      !(event.target as HTMLElement).closest('.blog-filter, .blog-applied-filter, .blog-filter-head-icon, .blog-filter-item-icon')) {
       this.filterOpen = false;
     }
   }
@@ -35,8 +34,26 @@ export class BlogComponent implements OnInit {
               private router: Router,) {
   }
 
-  ngOnInit(): void {
+  get isDisabledPrevPage(): boolean {
+    const currentPage = this.activeParams.page ? +this.activeParams.page : 1;
+    return currentPage === 1;
+  }
 
+  get isDisabledNextPage(): boolean {
+    const currentPage = this.activeParams.page ? +this.activeParams.page : 1;
+    return currentPage === this.pages.length;
+  }
+
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (!params['page']) {
+        this.router.navigate([], {
+          relativeTo: this.activatedRoute,
+          queryParams: {...params, page: 1}, // Добавляем page=1, сохраняя остальные параметры
+          queryParamsHandling: 'merge' // Объединяем новые параметры с текущими
+        });
+      }
+    });
     this.categoryService.getCategories()
       .subscribe((categories: CategoryType[]) => {
         this.categories = categories;
@@ -44,6 +61,9 @@ export class BlogComponent implements OnInit {
           const activeParams: ActiveParamsType = {categories: []};
           if (params['categories']) {
             activeParams.categories = Array.isArray(params['categories']) ? params['categories'] : [params['categories']];
+          }
+          if (params.hasOwnProperty('page')) {
+            activeParams.page = +params['page'];
           }
           this.activeParams = activeParams;
           this.appliedFilters = [];
@@ -56,16 +76,15 @@ export class BlogComponent implements OnInit {
               });
             }
           });
+          this.articleService.getArticles(this.activeParams)
+            .subscribe(data => {
+              this.pages = [];
+              for (let i = 1; i <= data.pages; i++) {
+                this.pages.push(i);
+              }
+              this.articles = data.items;
+            });
         });
-      });
-
-    this.articleService.getArticles()
-      .subscribe(data => {
-        this.pages = [];
-        for (let i = 1; i <= data.pages; i++) {
-          this.pages.push(i);
-        }
-        this.articles = data.items;
       });
   }
 
@@ -86,7 +105,7 @@ export class BlogComponent implements OnInit {
       // this.activeParams.categories.push(url);
       this.activeParams.categories = [...this.activeParams.categories, url];
     }
-
+    this.activeParams.page = 1;
     this.router.navigate(['/blog'], {
       queryParams: this.activeParams,
     });
@@ -94,9 +113,36 @@ export class BlogComponent implements OnInit {
 
   removeAppliedFilter(appliedFilter: { name: string, urlParam: string }): void {
     this.activeParams.categories = this.activeParams.categories.filter(item => item !== appliedFilter.urlParam);
+    this.activeParams.page = 1;
     this.router.navigate(['/blog'], {
       queryParams: this.activeParams,
     });
+  }
+
+  openPage(page: number): void {
+    this.activeParams.page = page;
+    this.router.navigate(['/blog'], {
+      queryParams: this.activeParams,
+    });
+  }
+
+  openPrevPage(): void {
+    if (this.activeParams.page && this.activeParams.page > 1) {
+      this.activeParams.page--;
+      this.router.navigate(['/blog'], {
+        queryParams: this.activeParams,
+      });
+    }
+  }
+
+  openNextPage(): void {
+    console.log(this.activeParams.page);
+    if (this.activeParams.page && this.activeParams.page < this.pages.length) {
+      this.activeParams.page++;
+      this.router.navigate(['/blog'], {
+        queryParams: this.activeParams,
+      });
+    }
   }
 
 }

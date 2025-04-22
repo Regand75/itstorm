@@ -1,6 +1,9 @@
 @import "../../../../assets/styles/variables";
 
 .service-card {
+
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 291px;
   height: 498px;
@@ -32,6 +35,7 @@
     border-radius: 5px;
     background-size: cover;
     background-position: center;
+    flex-shrink: 0;
   }
 
   .service-card-title {
@@ -41,6 +45,7 @@
     line-height: 130%;
     color: $light-blue-text-color;
     margin-top: 15px;
+    flex-shrink: 0;
   }
 
   .service-card-text {
@@ -53,7 +58,7 @@
     margin-top: 10px;
 
     &.is-data-backend-text {
-      height: 147px;
+      flex: 1 1 auto;
       overflow-y: auto;
       margin-top: 20px;
     }
@@ -64,6 +69,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 15px;
+    flex-shrink: 0;
 
     .service-card-price {
       font-family: "Montserrat", sans-serif;
@@ -76,12 +82,12 @@
       width: 163px;
     }
   }
+
   .service-card-reading {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    flex-shrink: 0;
     color: $light-blue-text-color;
     text-decoration: underline;
     cursor: pointer;
+    margin-top: 10px;
   }
 }
