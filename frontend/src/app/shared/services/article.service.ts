@@ -19,6 +19,14 @@ export class ArticleService {
     });
   }
 
+  getArticle(url: string): Observable<ArticleType> {
+    return this.http.get<ArticleType>(environment.api + 'articles/' + url);
+  }
+
+  getRelatedArticles(url: string): Observable<ArticleType[]> {
+    return this.http.get<ArticleType[]>(environment.api + 'articles/related/' + url);
+  }
+
   getTopArticles(): Observable<ArticleType[]> {
     return this.http.get<ArticleType[]>(environment.api + 'articles/top');
   }

@@ -1,1 +1,25 @@
-<p>detail works!</p>
+<div class="detail" *ngIf="article">
+  <div class="container">
+
+    <div class="detail-block-title">
+      Блог /<span>{{ article.title }}</span>
+    </div>
+    <div class="detail-short-info">
+      <div class="detail-block-short-info">
+        <div class="detail-title">{{ article.title }}</div>
+        <div class="detail-description">{{ article.description }}</div>
+      </div>
+      <div class="detail-image" style="background-image: url({{serverStaticPath + article.image}})"></div>
+    </div>
+    <div class="detail-info-wrapper">
+      <div class="detail-info" [innerHTML]="article.text"></div>
+      <div class="related-article-block">
+        <div class="related-article-title">Читайте также:</div>
+        <div class="related-article-wrapper">
+          <service-card *ngFor="let article of articles" [article]="article"></service-card>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

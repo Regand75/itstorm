@@ -41,10 +41,4 @@ export class ServiceCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigate() {
-    if (this.isDataBackend) {
-      this.router.navigate(['/blog/']);
-    }
-  }
-
 }

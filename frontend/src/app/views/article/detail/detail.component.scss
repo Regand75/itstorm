@@ -1,0 +1,103 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.detail {
+  padding-top: 80px;
+  padding-bottom: 120px;
+
+  .container {
+    .detail-block-title {
+      color: #B9D5FD;
+      margin-bottom: 60px;
+
+      span {
+        margin-left: 8px;
+        color: $light-blue-text-color;
+      }
+    }
+
+    .detail-short-info {
+      margin-bottom: 60px;
+      display: flex;
+      justify-content: space-between;
+
+      .detail-block-short-info {
+        max-width: 607px;
+
+        .detail-title {
+          @include head-lora-38;
+          color: $light-blue-text-color;
+          margin-bottom: 40px;
+        }
+
+        .detail-description {
+          font-size: 20px;
+          color: $light-blue-text-color;
+        }
+      }
+
+      .detail-image {
+        width: 527px;
+        height: 320px;
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+      }
+    }
+
+    .detail-info-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .detail-info {
+        max-width: 818px;
+        color: $dark-blue-text-color;
+        font-size: 14px;
+
+        h3 {
+          margin-top: 0;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+          font-size: 20px;
+          color: $light-blue-text-color;
+        }
+
+        h3:not(:first-of-type) {
+          margin-top: 40px;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+
+        p:not(:last-of-type) {
+          margin-bottom: 20px;
+        }
+
+        p:first-child {
+          margin-bottom: 40px;
+        }
+      }
+
+      .related-article-block {
+        display: flex;
+        flex-direction: column;
+        width: 292px;
+        margin-top: 60px;
+
+        .related-article-title {
+          @include head-lora-26;
+          color: $light-blue-text-color;
+          margin-bottom: 20px;
+        }
+
+        .related-article-wrapper {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+      }
+    }
+  }
+}

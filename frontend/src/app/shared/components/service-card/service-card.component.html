@@ -11,5 +11,5 @@
       <button class="button">Подробнее</button>
     </div>
   </div>
-  <div class="service-card-reading" *ngIf="isDataBackend" (click)="navigate()">Читать дальше</div>
+  <a [routerLink]="'/article/' + article.url" class="service-card-reading" *ngIf="isDataBackend">Читать дальше</a>
 </div>
