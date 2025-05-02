@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../../core/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {UserInfoType} from "../../../../types/user-info.type";
+import {DefaultResponseType} from "../../../../types/default-response.type";
 
 @Component({
   selector: 'app-header',
@@ -12,9 +15,11 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   isLogged: boolean = false;
+  userInfo: UserInfoType | null = null;
 
   constructor(private authService: AuthService,
               private _snackBar: MatSnackBar,
+              private userService: UserService,
               private router: Router) {
     this.isLogged = this.authService.getIsLoggedIn();
   }
@@ -22,6 +27,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLogged = isLoggedIn;
+
+      if (isLoggedIn) {
+        this.userService.getUserInfo().subscribe((data: UserInfoType | DefaultResponseType) => {
+          if ((data as DefaultResponseType).error !== undefined) {
+            throw new Error((data as DefaultResponseType).message);
+          }
+          this.userInfo = data as UserInfoType;
+        });
+      }
     });
   }
 

@@ -60,6 +60,10 @@ header.header {
         align-items: center;
         justify-content: flex-end;
 
+        a {
+          cursor: pointer;
+        }
+
         .header-auth-toggle {
           margin-left: 7px;
         }

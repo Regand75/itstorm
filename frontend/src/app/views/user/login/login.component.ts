@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           next: (data: LoginResponseType | DefaultResponseType) => {
             let error = null;
             if ((data as DefaultResponseType).error !== undefined) {
-              error = (data as DefaultResponseType).massage;
+              error = (data as DefaultResponseType).message;
             }
             const loginResponse = data as LoginResponseType;
             if (!loginResponse.accessToken || !loginResponse.refreshToken || !loginResponse.userId) {

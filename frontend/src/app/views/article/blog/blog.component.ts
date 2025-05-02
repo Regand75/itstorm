@@ -4,7 +4,7 @@ import {ArticleType} from "../../../../types/article.type";
 import {CategoryService} from "../../../shared/services/category.service";
 import {CategoryType} from "../../../../types/category.type";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ActiveParamsType} from "../../../../types/active-params.type";
+import {ActiveParamsArticleType} from "../../../../types/active-params-article.type";
 
 @Component({
   selector: 'app-blog',
@@ -16,7 +16,7 @@ export class BlogComponent implements OnInit {
   articles: ArticleType[] = [];
   categories: CategoryType[] = [];
   filterOpen: boolean = false;
-  activeParams: ActiveParamsType = {categories: []};
+  activeParams: ActiveParamsArticleType = {categories: []};
   appliedFilters: { name: string, urlParam: string }[] = [];
   pages: number[] = [];
 
@@ -58,7 +58,7 @@ export class BlogComponent implements OnInit {
       .subscribe((categories: CategoryType[]) => {
         this.categories = categories;
         this.activatedRoute.queryParams.subscribe(params => {
-          const activeParams: ActiveParamsType = {categories: []};
+          const activeParams: ActiveParamsArticleType = {categories: []};
           if (params['categories']) {
             activeParams.categories = Array.isArray(params['categories']) ? params['categories'] : [params['categories']];
           }

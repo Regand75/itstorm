@@ -1,4 +1,4 @@
 export type DefaultResponseType = {
   error: boolean,
-  massage: string,
+  message: string,
 }
