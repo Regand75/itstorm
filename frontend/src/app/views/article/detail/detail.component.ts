@@ -13,6 +13,7 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserActionsType} from "../../../../types/user-actions.type";
 import {AuthService} from "../../../core/auth/auth.service";
+import {LoaderService} from "../../../shared/services/loader.service";
 
 @Component({
   selector: 'app-detail',
@@ -27,6 +28,7 @@ export class DetailComponent implements OnInit {
   articles: ArticleType[] = [];
   comments: CommentType[] = [];
   userActions: UserActionsType[] = [];
+  loadComment: boolean = true;
   serverStaticPath: string = environment.serverStaticPath;
   allCommentsCount: number = 0; // Общее количество комментариев
   initialLoadLimit: number = 3; // При первичной загрузке
@@ -53,7 +55,7 @@ export class DetailComponent implements OnInit {
               private commentService: CommentService,
               private _snackBar: MatSnackBar,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private loaderService: LoaderService,) {
     this.isLogged = this.authService.getIsLoggedIn();
     this.commentForm = this.fb.group({
       text: ['', [Validators.required, Validators.minLength(3)]],
@@ -129,21 +131,30 @@ export class DetailComponent implements OnInit {
   }
 
   loadMoreComments(): void {
-    const currentOffset = this.comments.length;
-    this.commentService.getComments({
-      ...this.commentsParams,
-      offset: currentOffset,
-    }).subscribe({
-      next: (response) => {
-        const newComments = response.comments.slice(0, this.loadMoreLimit);
-        this.comments = [...this.comments, ...newComments];
-        this.currentLoadedOffset += newComments.length;
-        this.allCommentsCount = response.allCount;
-      },
-      error: (error) => {
-        console.error('Ошибка при загрузке комментариев:', error);
-      }
-    });
+    this.loadComment = false;
+    this.loaderService.show();
+    setTimeout(() => {
+      const currentOffset = this.comments.length;
+      this.commentService.getComments({
+        ...this.commentsParams,
+        offset: currentOffset,
+      })
+        .subscribe({
+          next: (response) => {
+            const newComments = response.comments.slice(0, this.loadMoreLimit);
+            this.comments = [...this.comments, ...newComments];
+            this.currentLoadedOffset += newComments.length;
+            this.allCommentsCount = response.allCount;
+            this.loaderService.hide();
+            this.loadComment = true;
+          },
+          error: (error) => {
+            console.error('Ошибка при загрузке комментариев:', error);
+            this.loaderService.hide();
+            this.loadComment = true;
+          }
+        });
+    },300);
   }
 
   postComment(): void {

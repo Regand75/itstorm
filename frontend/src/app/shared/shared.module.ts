@@ -4,14 +4,15 @@ import {NameValidatorDirective} from "./directives/name-validator.directive";
 import { ServiceCardComponent } from './components/service-card/service-card.component';
 import {RouterModule} from "@angular/router";
 import { AdvantageComponent } from './components/advantage/advantage.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
-  declarations: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent],
+  declarations: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent, LoaderComponent],
   imports: [
     CommonModule,
     RouterModule,
   ],
-    exports: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent],
+    exports: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent, LoaderComponent],
 })
 export class SharedModule { }

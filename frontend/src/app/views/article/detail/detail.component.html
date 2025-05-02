@@ -128,7 +128,9 @@
               </div>
             </div>
 
-            <div class="detail-comment-load" *ngIf="shouldShowLoadMore" (click)="loadMoreComments()">
+            <app-loader></app-loader>
+
+            <div class="detail-comment-load" *ngIf="shouldShowLoadMore && loadComment" (click)="loadMoreComments()">
               <div class="detail-comment-load-text">Загрузить ещё комментарии</div>
               <div class="detail-comment-load-icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,17 +139,6 @@
                     fill="#709FDC"/>
                 </svg>
               </div>
-            </div>
-
-            <div class="lds-spinner">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
             </div>
 
           </div>

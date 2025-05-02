@@ -25,16 +25,18 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.authService.getIsLoggedIn()) {
+      this.isLogged = true;
+      this.loadUserInfo();
+    }
+
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLogged = isLoggedIn;
 
       if (isLoggedIn) {
-        this.userService.getUserInfo().subscribe((data: UserInfoType | DefaultResponseType) => {
-          if ((data as DefaultResponseType).error !== undefined) {
-            throw new Error((data as DefaultResponseType).message);
-          }
-          this.userInfo = data as UserInfoType;
-        });
+        this.loadUserInfo();
+      } else {
+        this.userInfo = null;
       }
     });
   }
@@ -56,6 +58,15 @@ export class HeaderComponent implements OnInit {
     this.authService.userId = null;
     this._snackBar.open('Вы вышли из системы');
     this.router.navigate(['/']);
+  }
+
+  private loadUserInfo(): void {
+    this.userService.getUserInfo().subscribe((data: UserInfoType | DefaultResponseType) => {
+      if ((data as DefaultResponseType).error !== undefined) {
+        throw new Error((data as DefaultResponseType).message);
+      }
+      this.userInfo = data as UserInfoType;
+    });
   }
 
 }
