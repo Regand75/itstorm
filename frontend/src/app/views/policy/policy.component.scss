@@ -1,0 +1,28 @@
+@import "../../../assets/styles/variables";
+
+.policy {
+  padding: 60px 0;
+
+  .container {
+    .policy-info {
+      margin-bottom: 60px;
+      color: $dark-blue-text-color;
+      font-size: 14px;
+
+      .policy-title {
+        color: $light-blue-text-color;
+        margin-bottom: 60px;
+      }
+
+      .policy-info-title {
+        color: $light-blue-text-color;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .policy-info-text {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

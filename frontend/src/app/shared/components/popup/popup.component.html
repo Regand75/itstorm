@@ -29,7 +29,7 @@
     <div class="popup-input">
       <input type="text" class="input"
              [ngStyle]="{'border-color': applicationForm.get('phone')?.invalid && (applicationForm.get('phone')?.dirty || applicationForm.get('phone')?.touched) ? 'red' : ''}"
-             placeholder="Ваш номер телефона" formControlName="phone">
+             [prefix]="'+7 '" mask="(000) 000-00-00" placeholder="Ваш номер телефона" formControlName="phone">
     </div>
   </div>
   <div class="popup-button">
