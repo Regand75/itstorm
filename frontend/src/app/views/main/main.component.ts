@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {ArticleService} from "../../shared/services/article.service";
 import {ArticleType} from "../../../types/article.type";
+import {MatDialog} from "@angular/material/dialog";
+import {PopupComponent} from "../../shared/components/popup/popup.component";
 
 @Component({
   selector: 'app-main',
@@ -11,6 +13,7 @@ import {ArticleType} from "../../../types/article.type";
 export class MainComponent implements OnInit {
 
   articles: ArticleType[] = [];
+  allServices: string[] = [];
 
   customOptionsOffers: OwlOptions = {
     loop: true,
@@ -61,6 +64,7 @@ export class MainComponent implements OnInit {
       image: 'instagram.png',
       marginTop: '3px',
       marginBottom: '0',
+      service: 'Продвижение',
     },
     {
       leadIn: 'Акция',
@@ -71,6 +75,7 @@ export class MainComponent implements OnInit {
       image: 'copywriter.png',
       marginTop: '20px',
       marginBottom: '10px',
+      service: 'Копирайтинг',
     },
     {
       leadIn: 'Новость дня',
@@ -81,6 +86,7 @@ export class MainComponent implements OnInit {
       image: 'SMM.png',
       marginTop: '20px',
       marginBottom: '10px',
+      service: 'SMM',
     },
   ];
 
@@ -90,24 +96,28 @@ export class MainComponent implements OnInit {
       title: 'Создание сайтов',
       description: 'В краткие сроки мы создадим качественный и самое главное продающий сайт для продвижения Вашего бизнеса!',
       price: '7 500',
+      service: 'Создание сайтов',
     },
     {
       image: 'photo2.png',
       title: 'Продвижение',
       description: 'Вам нужен качественный SMM-специалист или грамотный таргетолог? Мы готовы оказать Вам услугу “Продвижения” на наивысшем уровне!',
       price: '3 500',
+      service: 'Продвижение',
     },
     {
       image: 'photo3.png',
       title: 'Реклама',
       description: 'Без рекламы не может обойтись ни один бизнес или специалист. Обращаясь к нам, мы гарантируем быстрый прирост клиентов за счёт правильно настроенной рекламы.',
       price: '1 000',
+      service: 'Реклама',
     },
     {
       image: 'photo4.png',
       title: 'Копирайтинг',
       description: 'Наши копирайтеры готовы написать Вам любые продающие текста, которые не только обеспечат рост охватов, но и помогут выйти на новый уровень в продажах.',
       price: '750',
+      service: 'Копирайтинг',
     },
   ];
 
@@ -172,14 +182,27 @@ export class MainComponent implements OnInit {
     },
   ]
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.allServices = this.offers.map(offer => offer.service);
     this.articleService.getTopArticles()
       .subscribe((data: ArticleType[]) => {
         this.articles = data;
       });
+  }
+
+  openRequestService(service: string, allServices: string[]): void {
+    this.dialog.open(PopupComponent, {
+      width: '727px',
+      data: {
+        selectedService: service,
+        allServices: allServices,
+        openRequestService: true,
+      }
+    });
   }
 
 }

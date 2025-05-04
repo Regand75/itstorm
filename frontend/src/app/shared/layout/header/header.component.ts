@@ -16,12 +16,16 @@ export class HeaderComponent implements OnInit {
 
   isLogged: boolean = false;
   userInfo: UserInfoType | null = null;
+  currentUrl: string = '';
 
   constructor(private authService: AuthService,
               private _snackBar: MatSnackBar,
               private userService: UserService,
               private router: Router) {
     this.isLogged = this.authService.getIsLoggedIn();
+    this.router.events.subscribe(() => {
+      this.currentUrl = this.router.url;
+    });
   }
 
   ngOnInit(): void {

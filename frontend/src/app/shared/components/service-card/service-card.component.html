@@ -8,7 +8,7 @@
   <div class="service-card-info" *ngIf="!isDataBackend">
     <div class="service-card-price">От {{serviceCardData.price}} ₽</div>
     <div class="service-card-action">
-      <button class="button">Подробнее</button>
+      <button class="button" (click)="openRequestService(serviceCardData.service)">Подробнее</button>
     </div>
   </div>
   <a [routerLink]="'/article/' + article.url" class="service-card-reading" *ngIf="isDataBackend">Читать дальше</a>

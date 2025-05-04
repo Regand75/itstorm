@@ -1,0 +1,94 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.popup {
+  padding: 94px 152px 30px 152px;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  color: $light-blue-text-color;
+
+  &.is-order-consultation {
+    padding-bottom: 38px;
+  }
+
+  &.is-open-gratitude {
+    padding: 163px 142px;
+  }
+
+  .popup-close {
+    position: absolute;
+    cursor: pointer;
+    top: 30px;
+    right: 30px;
+  }
+
+  .popup-title {
+    @include head-lora-38;
+    margin-bottom: 20px;
+    width: 408px;
+    line-height: 130%;
+
+    &.is-open-gratitude {
+      width: 443px;
+    }
+  }
+
+  .popup-text {
+    font-size: 14px;
+    margin-bottom: 40px;
+    color: $violet-text-color;
+  }
+
+  .popup-inputs {
+    margin-bottom: 20px;
+
+    .popup-input {
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      .input {
+        width: 422px;
+        font-size: 14px;
+        color: $light-blue-text-color;
+      }
+    }
+  }
+
+  .popup-button {
+    button.button {
+      width: 422px;
+
+      &.is-open-gratitude {
+        width: 73px;
+        padding: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .popup-error {
+    height: 56px;
+
+    .popup-error-text {
+      display: none;
+      color: red;
+      font-size: 14px;
+      &.is-open-error {
+        display: inline-block;
+        margin-top: 20px;
+      }
+    }
+  }
+}

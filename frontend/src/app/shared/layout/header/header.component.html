@@ -15,7 +15,7 @@
                 <a routerLink="/" fragment="info">О нас</a>
               </li>
               <li>
-                <a routerLink="blog" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Статьи</a>
+                <a routerLink="/blog" [ngClass]="{ active: currentUrl.startsWith('/blog') }">Статьи</a>
               </li>
               <li>
                 <a routerLink="/" fragment="reviews">Отзывы</a>
@@ -64,7 +64,7 @@
         </mat-menu>
         <div class="header-auth-toggle">
           <span *ngIf="!isLogged">Войти</span>
-          <span *ngIf="isLogged">{{ userInfo?.name }}</span>
+          <span *ngIf="isLogged">Привет, {{ userInfo?.name }}!</span>
         </div>
       </div>
     </div>

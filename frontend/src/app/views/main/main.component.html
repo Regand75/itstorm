@@ -15,7 +15,7 @@
             <div class="offers-text"
                  style="margin-top: {{ offer.marginTop }}; margin-bottom: {{ offer.marginBottom }}">{{ offer.text }}
             </div>
-            <a href="#" class="offers-button button">Подробнее</a>
+            <div class="offers-button button" (click)="openRequestService(offer.service, allServices)">Подробнее</div>
           </div>
         </div>
       </ng-template>
@@ -55,7 +55,7 @@
   <div class="container">
     <div class="services-title">Услуги, которые мы предлагаем</div>
     <div class="services-wrapper">
-      <service-card *ngFor="let serviceCardData of servicesCardData" [serviceCardData]="serviceCardData"></service-card>
+      <service-card *ngFor="let serviceCardData of servicesCardData" [serviceCardData]="serviceCardData" [servicesCardData]="servicesCardData"></service-card>
     </div>
   </div>
 </section>

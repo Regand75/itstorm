@@ -5,14 +5,20 @@ import { ServiceCardComponent } from './components/service-card/service-card.com
 import {RouterModule} from "@angular/router";
 import { AdvantageComponent } from './components/advantage/advantage.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PopupComponent } from './components/popup/popup.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent, LoaderComponent],
+  declarations: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent, LoaderComponent, PopupComponent],
   imports: [
     CommonModule,
+    MatDialogModule,
+    FormsModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
-    exports: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent, LoaderComponent],
+    exports: [NameValidatorDirective, ServiceCardComponent, AdvantageComponent, LoaderComponent, PopupComponent],
 })
 export class SharedModule { }
