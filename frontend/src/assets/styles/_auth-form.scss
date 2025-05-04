@@ -25,6 +25,24 @@
       }
     }
 
+    .password-wrapper {
+      position: relative;
+
+      .toggle-password {
+        position: absolute;
+        right: 17px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+
+      .material-icons {
+        font-size: 20px;
+      }
+    }
+
     .auth-checkbox {
       width: 422px;
       display: flex;

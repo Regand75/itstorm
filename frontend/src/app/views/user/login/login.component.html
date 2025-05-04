@@ -10,10 +10,13 @@
                  [ngStyle]="{'border-color': loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) ? 'red' : ''}"
                  placeholder="Электронная почта" formControlName="email">
         </div>
-        <div class="auth-input">
-          <input type="password" class="input"
+        <div class="auth-input password-wrapper">
+          <input [type]="hidePassword ? 'password' : 'text'" class="input"
                  [ngStyle]="{'border-color': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) ? 'red' : ''}"
                  placeholder="Пароль" formControlName="password">
+          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" aria-label="Показать пароль">
+            <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
+          </button>
         </div>
         <div class="auth-checkbox">
           <input type="checkbox" id="remember" formControlName="rememberMe">

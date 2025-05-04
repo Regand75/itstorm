@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]],
     rememberMe: [false],
   });
+  hidePassword: boolean = true;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -59,6 +60,10 @@ export class LoginComponent implements OnInit {
           }
         });
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.hidePassword = !this.hidePassword;
   }
 
 }

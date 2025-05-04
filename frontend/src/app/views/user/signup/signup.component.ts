@@ -14,6 +14,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class SignupComponent implements OnInit {
 
+  hidePassword: boolean = true;
+
   signupForm = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
@@ -61,6 +63,10 @@ export class SignupComponent implements OnInit {
           }
         })
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.hidePassword = !this.hidePassword;
   }
 
 }
