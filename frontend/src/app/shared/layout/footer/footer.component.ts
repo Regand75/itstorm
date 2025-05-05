@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
 
   openOrderConsultation(): void {
     this.dialog.open(PopupComponent, {
-      width: '727px', // можно изменить
+      width: '727px',
       data: {
         openRequestService: false,
       }

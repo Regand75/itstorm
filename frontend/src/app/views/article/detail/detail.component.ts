@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ArticleService} from "../../../shared/services/article.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
 import {ArticleType} from "../../../../types/article.type";
 import {environment} from "../../../../environments/environment";
 import {forkJoin, switchMap} from "rxjs";

@@ -31,33 +31,6 @@
   animation: lds-spinner-after 1.2s linear infinite;
 }
 
-//.lds-spinner div:nth-child(1):after {
-//  background-color: #1466e1;
-//}
-//.lds-spinner div:nth-child(2):after {
-//  background-color: #ffffff;
-//}
-//.lds-spinner div:nth-child(3):after {
-//  background-color: #c4cfef;
-//}
-//.lds-spinner div:nth-child(4):after {
-//  background-color: #b0c8ed;
-//}
-//.lds-spinner div:nth-child(5):after {
-//  background-color: #88aee8;
-//}
-//.lds-spinner div:nth-child(6):after {
-//  background-color: #558ee3;
-//}
-//.lds-spinner div:nth-child(7):after {
-//  background-color: #4581dc;
-//}
-//.lds-spinner div:nth-child(8):after {
-//  background-color: #3076e1;
-//}
-
-
-/* Вращение каждого элемента + смещение по времени */
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);
   animation-delay: -1.05s;
