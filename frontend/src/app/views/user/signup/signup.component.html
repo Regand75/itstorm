@@ -9,23 +9,51 @@
           <input type="text" class="input" NameValidator
                  [ngStyle]="{'border-color': signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'red' : ''}"
                  placeholder="Ваше имя" formControlName="name">
+          <div class="error-message" *ngIf="signupForm.get('name')?.touched || signupForm.get('name')?.dirty">
+            <div *ngIf="signupForm.get('name')?.errors?.['required']">
+              Необходимо указать имя
+            </div>
+            <div *ngIf="signupForm.get('name')?.errors?.['invalidName']">
+              Имя должно быть на кириллице и начинаться с заглавной буквы
+            </div>
+          </div>
         </div>
         <div class="auth-input">
           <input type="text" class="input"
                  [ngStyle]="{'border-color': signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'red' : ''}"
                  placeholder="Электронная почта" formControlName="email">
+          <div class="error-message" *ngIf="signupForm.get('email')?.touched || signupForm.get('email')?.dirty">
+            <div *ngIf="signupForm.get('email')?.errors?.['required']">
+              Необходимо указать электронную почту
+            </div>
+            <div *ngIf="signupForm.get('email')?.errors?.['email']">
+              Введите корректный адрес электронной почты
+            </div>
+          </div>
         </div>
-        <div class="auth-input password-wrapper">
-          <input [type]="hidePassword ? 'password' : 'text'" class="input"
-                 [ngStyle]="{'border-color': signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'red' : ''}"
-                 placeholder="Пароль" formControlName="password">
-          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" aria-label="Показать пароль">
-            <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
-          </button>
+        <div class="auth-input">
+          <div class="password-wrapper">
+            <input [type]="hidePassword ? 'password' : 'text'" class="input"
+                   [ngStyle]="{'border-color': signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'red' : ''}"
+                   placeholder="Пароль" formControlName="password">
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()"
+                    aria-label="Показать пароль">
+              <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
+            </button>
+          </div>
+          <div class="error-message" *ngIf="signupForm.get('password')?.touched || signupForm.get('password')?.dirty">
+            <div *ngIf="signupForm.get('password')?.errors?.['required']">
+              Необходимо указать пароль
+            </div>
+            <div *ngIf="signupForm.get('password')?.errors?.['pattern']">
+              Пароль не менее 8-ми цифр и латинских букв, одна заглавная
+            </div>
+          </div>
         </div>
         <div class="auth-checkbox">
           <input type="checkbox" id="agree" formControlName="agree">
-          <label for="agree">Я принимаю <a [routerLink]="'/policy'">условия пользовательского соглашения</a> и даю <a [routerLink]="'/policy'">согласие
+          <label for="agree">Я принимаю <a [routerLink]="'/policy'">условия пользовательского соглашения</a> и даю <a
+            [routerLink]="'/policy'">согласие
             на обработку персональных данных.</a></label>
         </div>
       </div>

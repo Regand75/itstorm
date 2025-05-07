@@ -73,11 +73,11 @@
         инфопродуктов. Компания была основана в 2019 году и за всё это время смогла выйти в ТОП-10 агенств, предлагающих
         услуги продвижения в сети.
       </p>
-      <div class="info-advantages">
+      <div class="info-advantages" *ngIf="advantages">
         <div class="info-advantages-title">Наши преимущества</div>
 
         <div class="info-advantages-wrapper">
-          <advantage *ngFor="let advantage of advantages" [advantages]="advantage"></advantage>
+          <advantage *ngFor="let advantage of advantages, let i = index" [advantages]="advantage" [index]="i"></advantage>
         </div>
       </div>
     </div>

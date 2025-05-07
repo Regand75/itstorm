@@ -17,7 +17,7 @@
         <div class="detail-social-wrapper">
           <div class="detail-social-text">Понравилась статья? Поделитесь ею в своих социальных сетях!</div>
           <div class="detail-social-icon">
-            <a href="#">
+            <a href="https://www.vk.com/" target="_blank">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_114_792)">
                   <path
@@ -31,7 +31,7 @@
                 </defs>
               </svg>
             </a>
-            <a href="#">
+            <a href="https://www.facebook.com/" target="_blank">
               <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_114_788)">
                   <path
@@ -45,7 +45,7 @@
                 </defs>
               </svg>
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/" target="_blank">
               <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_114_790)">
                   <path
@@ -63,7 +63,7 @@
         </div>
         <div class="detail-comments">
           <div class="detail-comments-title">Комментарии к статье</div>
-          <div class="detail-comments-info" *ngIf="isLogged">Будьте первым, кто оставит свой комментарий к статье!</div>
+          <div class="detail-comments-info" *ngIf="isLogged && !hasComments">Будьте первым, кто оставит свой комментарий к статье!</div>
           <div class="detail-comments-block" [formGroup]="commentForm" *ngIf="isLogged">
             <textarea cols="101" rows="11" class="input detail-comments-input"
                       [ngStyle]="{'border-color': commentForm.get('text')?.invalid && (commentForm.get('text')?.dirty || commentForm.get('text')?.touched) ? 'red' : ''}"

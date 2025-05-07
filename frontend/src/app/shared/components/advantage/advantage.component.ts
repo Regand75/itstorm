@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AdvantageType} from "../../../../types/advantage.type";
 
 @Component({
   selector: 'advantage',
@@ -7,13 +8,16 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AdvantageComponent implements OnInit {
 
-  @Input() advantages!: {
-    number: string,
-    title: string,
-    text: string,
-  };
+  @Input() advantages: AdvantageType;
+  @Input() index: number;
 
-  constructor() { }
+  constructor() {
+    this.advantages = {
+      title: '',
+      text: '',
+    };
+    this.index = 0;
+  }
 
   ngOnInit(): void {
   }

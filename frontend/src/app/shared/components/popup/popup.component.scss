@@ -46,6 +46,14 @@
     .popup-input {
       margin-bottom: 5px;
 
+      .error-message {
+        color: red;
+        text-align: start;
+        font-size: 12px;
+        margin-top: 4px;
+        width: 422px;
+      }
+
       &:last-child {
         margin-bottom: 0;
       }

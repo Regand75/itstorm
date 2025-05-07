@@ -22,14 +22,27 @@
       </select>
     </div>
     <div class="popup-input">
-      <input type="text" class="input"
+      <input type="text" class="input" NameValidator
              [ngStyle]="{'border-color': applicationForm.get('name')?.invalid && (applicationForm.get('name')?.dirty || applicationForm.get('name')?.touched) ? 'red' : ''}"
              placeholder="Ваше имя" formControlName="name">
+      <div class="error-message" *ngIf="applicationForm.get('name')?.touched || applicationForm.get('name')?.dirty">
+        <div *ngIf="applicationForm.get('name')?.errors?.['required']">
+          Необходимо указать имя
+        </div>
+        <div *ngIf="applicationForm.get('name')?.errors?.['invalidName']">
+          Имя должно быть на кириллице и начинаться с заглавной буквы
+        </div>
+      </div>
     </div>
     <div class="popup-input">
       <input type="text" class="input"
              [ngStyle]="{'border-color': applicationForm.get('phone')?.invalid && (applicationForm.get('phone')?.dirty || applicationForm.get('phone')?.touched) ? 'red' : ''}"
              [prefix]="'+7 '" mask="(000) 000-00-00" placeholder="Ваш номер телефона" formControlName="phone">
+      <div class="error-message" *ngIf="applicationForm.get('phone')?.touched || applicationForm.get('phone')?.dirty">
+        <div *ngIf="applicationForm.get('phone')?.errors?.['required']">
+          Необходимо указать номер телефона
+        </div>
+      </div>
     </div>
   </div>
   <div class="popup-button">

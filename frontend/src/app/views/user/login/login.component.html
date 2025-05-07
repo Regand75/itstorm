@@ -9,14 +9,30 @@
           <input type="text" class="input"
                  [ngStyle]="{'border-color': loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) ? 'red' : ''}"
                  placeholder="Электронная почта" formControlName="email">
+          <div class="error-message" *ngIf="loginForm.get('email')?.touched || loginForm.get('email')?.dirty">
+            <div *ngIf="loginForm.get('email')?.errors?.['required']">
+              Необходимо указать электронную почту
+            </div>
+            <div *ngIf="loginForm.get('email')?.errors?.['email']">
+              Введите корректный адрес электронной почты
+            </div>
+          </div>
         </div>
-        <div class="auth-input password-wrapper">
-          <input [type]="hidePassword ? 'password' : 'text'" class="input"
-                 [ngStyle]="{'border-color': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) ? 'red' : ''}"
-                 placeholder="Пароль" formControlName="password">
-          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" aria-label="Показать пароль">
-            <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
-          </button>
+        <div class="auth-input">
+          <div class="password-wrapper">
+            <input [type]="hidePassword ? 'password' : 'text'" class="input"
+                   [ngStyle]="{'border-color': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) ? 'red' : ''}"
+                   placeholder="Пароль" formControlName="password">
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()"
+                    aria-label="Показать пароль">
+              <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
+            </button>
+          </div>
+          <div class="error-message" *ngIf="loginForm.get('password')?.touched || loginForm.get('password')?.dirty">
+            <div *ngIf="loginForm.get('password')?.errors?.['required']">
+              Необходимо ввести пароль
+            </div>
+          </div>
         </div>
         <div class="auth-checkbox">
           <input type="checkbox" id="remember" formControlName="rememberMe">
