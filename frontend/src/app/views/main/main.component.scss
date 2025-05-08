@@ -108,7 +108,8 @@
   background-image: url("../../../assets/images/page/info-bg.png");
   background-repeat: no-repeat;
   background-position-x: calc(50% - 390px);
-  padding-bottom: 120px;
+  margin-bottom: 120px;
+  min-height: 454px;
 
   .container {
 

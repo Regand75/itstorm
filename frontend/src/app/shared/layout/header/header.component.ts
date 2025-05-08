@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {UserInfoType} from "../../../../types/user-info.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
+import {FragmentService} from "../../services/fragment.service";
 
 @Component({
   selector: 'app-header',
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService,
               private _snackBar: MatSnackBar,
               private userService: UserService,
+              private fragmentService: FragmentService,
               private router: Router) {
     this.isLogged = this.authService.getIsLoggedIn();
     this.router.events.subscribe(() => {
@@ -71,6 +73,10 @@ export class HeaderComponent implements OnInit {
       }
       this.userInfo = data as UserInfoType;
     });
+  }
+
+  scrollTo(fragment: string): void {
+    this.fragmentService.goToFragment(fragment);
   }
 
 }

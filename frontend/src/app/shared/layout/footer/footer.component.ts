@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../../components/popup/popup.component";
+import {FragmentService} from "../../services/fragment.service";
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,8 @@ import {PopupComponent} from "../../components/popup/popup.component";
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+              private fragmentService: FragmentService) { }
 
   ngOnInit(): void {
   }
@@ -21,5 +23,9 @@ export class FooterComponent implements OnInit {
         openRequestService: false,
       }
     });
+  }
+
+  scrollTo(fragment: string): void {
+    this.fragmentService.goToFragment(fragment);
   }
 }
