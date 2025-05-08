@@ -52,6 +52,15 @@
         font-size: 12px;
         margin-top: 4px;
         width: 422px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+
+        &.show {
+          opacity: 1;
+          max-height: 100px;
+        }
       }
 
       &:last-child {
