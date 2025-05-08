@@ -4,11 +4,28 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {RequestService} from "../../services/request.service";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {HttpErrorResponse} from "@angular/common/http";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.scss']
+  styleUrls: ['./popup.component.scss'],
+  animations: [
+    trigger('errorAnimation', [
+      state('hidden', style({
+        opacity: 0,
+        maxHeight: '0px',
+        overflow: 'hidden',
+      })),
+      state('visible', style({
+        opacity: 1,
+        maxHeight: '100px',
+      })),
+      transition('hidden <=> visible', [
+        animate('0.4s ease')
+      ])
+    ])
+  ]
 })
 export class PopupComponent implements OnInit {
 

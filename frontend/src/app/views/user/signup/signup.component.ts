@@ -6,11 +6,28 @@ import {Router} from "@angular/router";
 import {LoginResponseType} from "../../../../types/login-response.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {HttpErrorResponse} from "@angular/common/http";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
+  animations: [
+    trigger('errorAnimation', [
+      state('hidden', style({
+        opacity: 0,
+        maxHeight: '0px',
+        overflow: 'hidden',
+      })),
+      state('visible', style({
+        opacity: 1,
+        maxHeight: '100px',
+      })),
+      transition('hidden <=> visible', [
+        animate('0.4s ease')
+      ])
+    ])
+  ]
 })
 export class SignupComponent implements OnInit {
 

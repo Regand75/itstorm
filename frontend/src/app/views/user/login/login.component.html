@@ -9,7 +9,7 @@
           <input type="text" class="input"
                  [ngStyle]="{'border-color': loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) ? 'red' : ''}"
                  placeholder="Электронная почта" formControlName="email">
-          <div class="error-message" [class.show]="loginForm.get('email')?.touched || loginForm.get('email')?.dirty">
+          <div class="error-message" [@errorAnimation]="loginForm.get('email')?.touched || loginForm.get('email')?.dirty ? 'visible' : 'hidden'">
             <div *ngIf="loginForm.get('email')?.errors?.['required']">
               Необходимо указать электронную почту
             </div>
@@ -28,7 +28,7 @@
               <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
             </button>
           </div>
-          <div class="error-message" [class.show]="loginForm.get('password')?.touched || loginForm.get('password')?.dirty">
+          <div class="error-message" [@errorAnimation]="loginForm.get('password')?.touched || loginForm.get('password')?.dirty ? 'visible' : 'hidden'">
             <div *ngIf="loginForm.get('password')?.errors?.['required']">
               Необходимо ввести пароль
             </div>

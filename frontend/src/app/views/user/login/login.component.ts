@@ -6,11 +6,28 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('errorAnimation', [
+      state('hidden', style({
+        opacity: 0,
+        maxHeight: '0px',
+        overflow: 'hidden',
+      })),
+      state('visible', style({
+        opacity: 1,
+        maxHeight: '100px',
+      })),
+      transition('hidden <=> visible', [
+        animate('0.4s ease')
+      ])
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
 

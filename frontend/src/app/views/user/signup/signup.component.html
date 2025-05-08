@@ -9,7 +9,7 @@
           <input type="text" class="input" NameValidator
                  [ngStyle]="{'border-color': signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'red' : ''}"
                  placeholder="Ваше имя" formControlName="name">
-          <div class="error-message" [class.show]="signupForm.get('name')?.touched || signupForm.get('name')?.dirty">
+          <div class="error-message" [@errorAnimation]="signupForm.get('name')?.touched || signupForm.get('name')?.dirty ? 'visible' : 'hidden'">
             <div *ngIf="signupForm.get('name')?.errors?.['required']">
               Необходимо указать имя
             </div>
@@ -22,7 +22,7 @@
           <input type="text" class="input"
                  [ngStyle]="{'border-color': signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'red' : ''}"
                  placeholder="Электронная почта" formControlName="email">
-          <div class="error-message" [class.show]="signupForm.get('email')?.touched || signupForm.get('email')?.dirty">
+          <div class="error-message" [@errorAnimation]="signupForm.get('email')?.touched || signupForm.get('email')?.dirty ? 'visible' : 'hidden'">
             <div *ngIf="signupForm.get('email')?.errors?.['required']">
               Необходимо указать электронную почту
             </div>
@@ -41,7 +41,7 @@
               <span class="material-icons">{{ hidePassword ? 'visibility_off' : 'visibility' }}</span>
             </button>
           </div>
-          <div class="error-message" [class.show]="signupForm.get('password')?.touched || signupForm.get('password')?.dirty">
+          <div class="error-message" [@errorAnimation]="signupForm.get('password')?.touched || signupForm.get('password')?.dirty ? 'visible' : 'hidden'">
             <div *ngIf="signupForm.get('password')?.errors?.['required']">
               Необходимо указать пароль
             </div>
